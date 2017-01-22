@@ -1,6 +1,9 @@
 FROM sequenceiq/spark:1.6.0
 MAINTAINER com.ebay.oss
 
+# repair yum
+RUN rpm --rebuilddb; yum install -y yum-plugin-ovl
+
 #install wget
 RUN yum install -y wget
 

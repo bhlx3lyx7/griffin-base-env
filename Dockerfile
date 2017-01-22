@@ -1,6 +1,9 @@
 FROM sequenceiq/spark:1.6.0
 MAINTAINER com.ebay.oss
 
+#install wget
+RUN yum install -y wget
+
 #add user
 RUN rpm -e cracklib-dicts --nodeps && yum install -y cracklib-dicts
 ADD user/*.sh /root/
@@ -11,9 +14,6 @@ ENV GRIFFIN_HOME /home/griffin
 #set java environment variables
 ENV JAVA_HOME /usr/java/latest
 ENV PATH $JAVA_HOME/bin:$PATH
-
-#install wget
-RUN yum install -y wget
 
 #enter /apache
 RUN mkdir /apache
